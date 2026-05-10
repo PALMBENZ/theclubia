@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentia Academy - Formations Agents IA</title>
+  <meta name="description" content="Formations professionnelles pour apprendre à créer, automatiser et vendre des agents IA pour entreprises, freelances et entrepreneurs." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --card: #101c2f;
+      --accent: #34d399;
+      --accent-2: #60a5fa;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --white: #ffffff;
+      --danger: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #12325a, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 17, 31, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111f;
+      box-shadow: 0 18px 40px rgba(52, 211, 153, 0.22);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.18);
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 90px 22px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(52,211,153,0.12);
+      color: #a7f3d0;
+      border: 1px solid rgba(52,211,153,0.25);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 1.03;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .trust {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .terminal {
+      background: #020617;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .terminal-top {
+      padding: 12px 16px;
+      background: #111827;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .terminal-body {
+      padding: 22px;
+      font-family: Consolas, monospace;
+      color: #bbf7d0;
+      font-size: 0.95rem;
+    }
+
+    .terminal-body p { margin-bottom: 12px; color: #bbf7d0; }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 72px 22px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .section-title p { color: var(--muted); max-width: 720px; margin: auto; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 26px;
+    }
+
+    .card h3 { margin-bottom: 12px; font-size: 1.25rem; }
+    .card p, .card li { color: var(--muted); }
+    .card ul { padding-left: 20px; margin-top: 14px; }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin: 16px 0;
+      color: var(--accent);
+    }
+
+    .popular {
+      border-color: rgba(52,211,153,0.55);
+      box-shadow: 0 20px 70px rgba(52,211,153,0.12);
+      position: relative;
+    }
+
+    .popular::before {
+      content: "Le plus demandé";
+      position: absolute;
+      top: -14px;
+      right: 22px;
+      background: var(--accent);
+      color: #04111f;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .program {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .module {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .module strong { color: var(--accent); }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(52,211,153,0.18), rgba(96,165,250,0.16));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 34px;
+      padding: 54px 28px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      max-width: 620px;
+      margin: 28px auto 0;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(2,6,23,0.7);
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    footer {
+      padding: 35px 22px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero, .program { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">Agentia<span>Academy</span></div>
+      <div class="nav-links">
+        <a href="#formations">Formations</a>
+        <a href="#programme">Programme</a>
+        <a href="#prix">Prix</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn btn-primary">Réserver un appel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Formation IA pratique pour entrepreneurs, freelances et équipes</span>
+        <h1>Apprenez à créer des <span>agents IA</span> qui automatisent le travail réel.</h1>
+        <p>Une formation concrète pour construire des assistants IA capables de répondre aux clients, analyser des documents, automatiser des tâches, générer des leads et améliorer la productivité d’une entreprise.</p>
+        <div class="hero-actions">
+          <a href="#prix" class="btn btn-primary">Voir les formations</a>
+          <a href="#programme" class="btn btn-secondary">Découvrir le programme</a>
+        </div>
+        <div class="trust">
+          <span>✅ 100% pratique</span>
+          <span>✅ Sans code ou avec code</span>
+          <span>✅ Cas d’usage business</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="terminal">
+          <div class="terminal-top">agent-ia-business.workflow</div>
+          <div class="terminal-body">
+            <p>&gt; Analyse de documents PDF...</p>
+            <p>&gt; Réponse automatique aux prospects...</p>
+            <p>&gt; Création de devis personnalisés...</p>
+            <p>&gt; Agent IA prêt à vendre ✅</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formations">
+      <div class="section-title">
+        <h2>Ce que vous saurez faire</h2>
+        <p>La formation est orientée résultat : vous repartez avec des agents IA utilisables dans une vraie activité professionnelle.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Créer un agent IA client</h3>
+          <p>Un assistant capable de répondre aux questions fréquentes, qualifier les demandes et orienter les clients.</p>
+        </div>
+        <div class="card">
+          <h3>Automatiser avec n8n / Make</h3>
+          <p>Connectez l’IA à Gmail, Google Sheets, Notion, CRM, WhatsApp ou formulaires web.</p>
+        </div>
+        <div class="card">
+          <h3>Vendre vos agents IA</h3>
+          <p>Apprenez à transformer vos prototypes en offres commerciales simples pour PME, hôtels, restaurants, cabinets et freelances.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programme">
+      <div class="section-title">
+        <h2>Programme de formation</h2>
+        <p>Un parcours progressif, pensé pour passer de zéro à un agent IA fonctionnel et commercialisable.</p>
+      </div>
+      <div class="program">
+        <div class="card">
+          <h3>Objectif final</h3>
+          <p>Créer un agent IA professionnel connecté à vos données, capable d’exécuter des tâches et de générer de la valeur pour une entreprise.</p>
+        </div>
+        <div class="card">
+          <div class="module"><strong>Module 1 :</strong> Comprendre les agents IA, LLM, prompts, outils et automatisation.</div>
+          <div class="module"><strong>Module 2 :</strong> Créer un assistant IA avec une base documentaire PDF ou site web.</div>
+          <div class="module"><strong>Module 3 :</strong> Connecter l’agent à des outils externes : email, agenda, CRM, Google Sheets.</div>
+          <div class="module"><strong>Module 4 :</strong> Construire des workflows avec n8n, Make ou Zapier.</div>
+          <div class="module"><strong>Module 5 :</strong> Sécuriser les données, tester les réponses et éviter les hallucinations.</div>
+          <div class="module"><strong>Module 6 :</strong> Packager, présenter et vendre une solution agent IA à une entreprise.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prix">
+      <div class="section-title">
+        <h2>Choisissez votre formation</h2>
+        <p>Des offres adaptées à votre niveau et à vos objectifs.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Starter</h3>
+          <p>Pour comprendre et créer votre premier agent IA.</p>
+          <div class="price">290€</div>
+          <ul>
+            <li>Accès aux vidéos</li>
+            <li>Templates de prompts</li>
+            <li>1 cas pratique</li>
+            <li>Support email</li>
+          </ul>
+          <br />
+          <a href="#contact" class="btn btn-secondary">Je commence</a>
+        </div>
+        <div class="card popular">
+          <h3>Business Builder</h3>
+          <p>Pour créer et vendre des agents IA à des clients.</p>
+          <div class="price">790€</div>
+          <ul>
+            <li>Tout Starter</li>
+            <li>4 cas pratiques business</li>
+            <li>Automatisation n8n / Make</li>
+            <li>Scripts de vente</li>
+            <li>2 sessions live</li>
+          </ul>
+          <br />
+          <a href="#contact" class="btn btn-primary">Choisir cette offre</a>
+        </div>
+        <div class="card">
+          <h3>Premium Coaching</h3>
+          <p>Pour être accompagné sur votre propre projet IA.</p>
+          <div class="price">1490€</div>
+          <ul>
+            <li>Accompagnement individuel</li>
+            <li>Agent IA personnalisé</li>
+            <li>Audit de votre offre</li>
+            <li>Aide au pricing</li>
+            <li>Support prioritaire</li>
+          </ul>
+          <br />
+          <a href="#contact" class="btn btn-secondary">Demander un appel</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Pour qui ?</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>Freelances IT</h3><p>Ajoutez une offre IA rentable à vos missions actuelles.</p></div>
+        <div class="card"><h3>Entrepreneurs</h3><p>Automatisez votre prospection, votre support ou vos opérations.</p></div>
+        <div class="card"><h3>PME & équipes</h3><p>Formez vos collaborateurs à utiliser l’IA sur des cas concrets.</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="cta">
+        <h2>Prêt à créer vos premiers agents IA ?</h2>
+        <p>Remplissez le formulaire et recevez le programme détaillé de la formation.</p>
+        <form onsubmit="event.preventDefault(); alert('Merci ! Votre demande a bien été envoyée.');">
+          <input type="text" placeholder="Votre prénom et nom" required />
+          <input type="email" placeholder="Votre email" required />
+          <input type="tel" placeholder="Votre téléphone" />
+          <select required>
+            <option value="">Formation souhaitée</option>
+            <option>Starter - 290€</option>
+            <option>Business Builder - 790€</option>
+            <option>Premium Coaching - 1490€</option>
+          </select>
+          <textarea placeholder="Décrivez votre objectif : créer un agent pour vous, pour votre entreprise ou pour vendre à des clients ?"></textarea>
+          <button class="btn btn-primary" type="submit">Recevoir le programme</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Agentia Academy - Formations pour créer des agents IA. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
